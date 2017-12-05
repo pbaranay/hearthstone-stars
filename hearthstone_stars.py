@@ -1,4 +1,5 @@
 from collections import OrderedDict
+import math
 import random
 import statistics
 
@@ -62,3 +63,13 @@ def climb_to_legend(
 def simulate(n, *args, **kwargs):
     average = statistics.mean(climb_to_legend(*args, **kwargs) for _ in xrange(n))
     return average
+
+
+if __name__ == "__main__":
+    print("Welcome to the Hearthstone Legend Climb Simulator!")
+    while True:
+        win_rate = input("What is your average win rate? (Example: 0.5) ")
+        avg = int(math.ceil(simulate(100, win_rate)))
+        print("With a win rate of {}, it will take an average of {} games to reach Legend.".format(
+            win_rate, avg
+        ))
