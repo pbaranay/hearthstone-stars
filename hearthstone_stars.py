@@ -1,5 +1,7 @@
 from collections import OrderedDict
 import random
+import statistics
+
 
 def build_star_map():
     # total number of stars: rank
@@ -55,3 +57,8 @@ def climb_to_legend(
             if current_stars not in star_rank_floors:
                 current_stars -= 1
     return games
+
+
+def simulate(n, *args, **kwargs):
+    average = statistics.mean(climb_to_legend(*args, **kwargs) for _ in xrange(n))
+    return average
