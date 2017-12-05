@@ -26,13 +26,10 @@ def play_game(win_rate):
     return random.random() < win_rate
 
 
-RANK_FLOORS = [25, 20, 15, 10, 5]
-
-
-def climb_to_legend(win_rate, start_stars=0, no_streaks_above_rank=5):
+def climb_to_legend(win_rate, start_stars=0, no_streaks_above_rank=5, rank_floors=[25, 20, 15, 10, 5]):
     star_map = build_star_map()
     current_stars = start_stars
-    star_rank_floors = [min(k for k, v in star_map.items() if v == floor) for floor in RANK_FLOORS]
+    star_rank_floors = [min(k for k, v in star_map.items() if v == floor) for floor in rank_floors]
     no_streaks_above = min(k for k, v in star_map.items() if v == no_streaks_above_rank)
     wins_in_row = 0
     games = 0
